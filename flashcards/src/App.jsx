@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
+import { useState } from 'react';
+import infoPair from './components/infoPair'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+
+  const [currentCard, setCurrentCard] = useState(0);
+  const [answer, setAnswer] = useState(false);
+
+  const changeAnswer = () => {
+    (answer) ? setAnswer(false) : setAnswer(true);
+  }
+
+  const showNextQuestion = () => {
+    const randomIndex = Math.floor(Math.random() * infoPair.length);
+    setCurrentCard(randomIndex);
+    setAnswer(false);
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="App">
+      <h1>Dinosaur Trivia</h1>
+      <h3>Test your knowledge on dinosaurs and quiz yourself!</h3>
+      <h4>Number of cards:{infoPair.length}</h4>
+      <div class="container">
+        <div class="card" onClick={changeAnswer}>
+            <h3>{(answer) ? infoPair[currentCard].answer : infoPair[currentCard].question}</h3>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      <br></br>
+      <button onClick={showNextQuestion}>Next</button>
+    </div>
   )
 }
 
-export default App
+export default App;
