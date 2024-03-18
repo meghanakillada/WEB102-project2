@@ -2,7 +2,7 @@
 
 Submitted by: **Maggie Killada**
 
-This web app: ** This project allows you to flip random flashcards and guess answers to test your knowledge on dinosaurs.**
+This web app: **This project allows you to flip random flashcards and guess answers to test your knowledge on dinosaurs.**
 
 Time spent: **3** hours spent in total
 
